@@ -1,5 +1,18 @@
 Nombre del producto: cocacola
-Descripcion: bebeida refrescante
-Precio: $120.00
+Descripcion: bebida refrescante
+Precio: $45.00
+Cantidad en Stock: 3
+El precio total a pagar sera de:$135.00 
+
+Nombre del producto: pelota
+Descripcion: conjunto de cuera para jugar
+Precio: $37.23
 Cantidad en Stock: 5
+El precio total a pagar sera de:$186.15 
+
+Nombre del producto: juguete
+Descripcion: lkajslkajslka
+Precio: $123.23
+Cantidad en Stock: 6
+El precio total a pagar sera de: $739.38 
 

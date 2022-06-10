@@ -15,47 +15,55 @@ namespace ExamenUnidad6
             string nombre, descripcion;
             float precio;
             int cantidad;
+
+            //Metodo para agregar
             public void AgregarPro()
             {
-                
-                    StreamWriter sw = new StreamWriter("Productos.txt", true);
 
-                    try
-                    {
-                        Console.Clear();
-                        Console.WriteLine("----------Estimado usuario, ingrese la informacion adecuada-----------");
-                        Console.Write("Nombre del producto: ");
-                        nombre = Console.ReadLine();
-                        Console.Write("descripcion del producto: ");
-                        descripcion = Console.ReadLine();
-                        Console.Write("Precio del producto: ");
-                        precio = float.Parse(Console.ReadLine());
-                        Console.Write("Cantidad en Stock: ");
-                        cantidad = int.Parse(Console.ReadLine());
+                StreamWriter sw = new StreamWriter("Productos.txt", true);
 
-                        Console.Clear();
+                try
+                {
+                    Console.Clear();
 
-                        sw.WriteLine("Nombre del producto: " + nombre);
-                        sw.WriteLine("Descripcion: " + descripcion);
-                        sw.WriteLine("Precio: {0:C}", precio);
-                        sw.WriteLine("Cantidad en Stock: " + cantidad);
-                        sw.WriteLine("");
-                    }
-                    catch (IOException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                    finally
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Prodcuto agregado al carrito exitosamente");
-                        Console.Write("\n Presione enter para continuar");
-                        sw.Close();
-                        Console.ReadKey();
-                        Console.Clear();
-                    }
-                    
+                    //Captura de la informacion
+                    Console.WriteLine("----------Estimado usuario, ingrese la informacion adecuada-----------");
+                    Console.Write("Nombre del producto: ");
+                    nombre = Console.ReadLine();
+                    Console.Write("descripcion del producto: ");
+                    descripcion = Console.ReadLine();
+                    Console.Write("Precio del producto: ");
+                    precio = float.Parse(Console.ReadLine());
+                    Console.Write("Cantidad en Stock: ");
+                    cantidad = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+
+                    //Captura en el archivo
+                    sw.WriteLine("Nombre del producto: " + nombre);
+                    sw.WriteLine("Descripcion: " + descripcion);
+                    sw.WriteLine("Precio: {0:C}", precio);
+                    sw.WriteLine("Cantidad en Stock: " + cantidad);
+                    sw.WriteLine("El precio total a pagar sera de: {0:C} ", + CalcularCoste());
+                    sw.WriteLine("");
+                }
+                catch (IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    Console.Clear();
+                    Console.WriteLine("Prodcuto agregado al carrito exitosamente");
+                    Console.Write("\n Presione enter para continuar");
+                    sw.Close();
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+
             }
+
+            //Metodo para consultar historial
             public void LecturaInv()
             {
                 try
@@ -77,11 +85,13 @@ namespace ExamenUnidad6
                 finally
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Presione enter para regresar");
+                    Console.WriteLine("Presione ENTER para continuar");
                     Console.ReadKey();
                     Console.Clear();
                 }
             }
+
+            //Metodo para limpiar
             public void LimpiarInv()
             {
                 Console.Clear();
@@ -91,6 +101,12 @@ namespace ExamenUnidad6
                 Console.ReadKey();
                 Console.Clear();
             }
+
+            //Metodo para calcular el coste a pagar
+            public float CalcularCoste()
+            {
+                return precio * cantidad;
+            }
         }
         static void Main(string[] args)
         {
@@ -98,7 +114,7 @@ namespace ExamenUnidad6
             InventarioAmazon ama = new InventarioAmazon();
             do
             {
-                Console.WriteLine("Centro de compra de Amazon" +
+                Console.WriteLine("Bienvenido a la sucursal en linea de Amazon" +
                 "\n1). Ingresar producto al carrito de compras" +
                 "\n2). Limpiar historial de compras" +
                 "\n3). Ver historial" +
@@ -113,6 +129,8 @@ namespace ExamenUnidad6
                         do
                         {
                             ama.AgregarPro();
+
+                            //Pregunta al suario si quiere repetir la accion o no
                             Console.WriteLine("Le gustaria agregar otro producto? " +
                                 "\n1.Si" +
                                 "\n2.No");
@@ -128,6 +146,8 @@ namespace ExamenUnidad6
                         do
                         {
                             ama.LecturaInv();
+
+                            //Pregunta al suario si quiere repetir la accion o no
                             Console.WriteLine("Le gustaria ver nuevamente el historial? " +
                                 "\n1.Si" +
                                 "\n2.No");
@@ -137,6 +157,7 @@ namespace ExamenUnidad6
                         } while (opc != 2);
                         break;
                     case 4:
+                        Console.WriteLine("Agradecemos su preferencia, esperemas siga siendo cliente de nuestra sucursal");
                         Console.Write("Para salir del programa presione ENTER");
                         Console.ReadKey();
                         break;

@@ -1,0 +1,5 @@
+Nombre del producto: cocacola
+Descripcion: bebeida refrescante
+Precio: $120.00
+Cantidad en Stock: 5
+
